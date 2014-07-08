@@ -14,5 +14,6 @@ define openldap::server::globalconf(
     provider => $::openldap::server::provider,
     target   => $::openldap::server::conffile,
     value    => $value,
+    require  => Class['openldap::server::service']
   }
 }

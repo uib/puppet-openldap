@@ -29,36 +29,6 @@ class openldap::server::config {
       }
     }
     RedHat: {
-      $ldap = empty($::openldap::server::ldap_ifs) ? {
-        false => 'yes',
-        true  => 'no',
-      }
-      shellvar { 'SLAPD_LDAP':
-        ensure   => present,
-        target   => '/etc/sysconfig/ldap',
-        variable => 'SLAPD_LDAP',
-        value    => $ldap,
-      }
-      $ldaps = empty($::openldap::server::ldaps_ifs) ? {
-        false => 'yes',
-        true  => 'no',
-      }
-      shellvar { 'SLAPD_LDAPS':
-        ensure   => present,
-        target   => '/etc/sysconfig/ldap',
-        variable => 'SLAPD_LDAPS',
-        value    => $ldaps,
-      }
-      $ldapi = empty($::openldap::server::ldapi_ifs) ? {
-        false => 'yes',
-        true  => 'no',
-      }
-      shellvar { 'SLAPD_LDAPI':
-        ensure   => present,
-        target   => '/etc/sysconfig/ldap',
-        variable => 'SLAPD_LDAPI',
-        value    => $ldapi,
-      }
       shellvar { 'SLAPD_URLS':
         ensure   => present,
         target   => '/etc/sysconfig/ldap',

@@ -29,8 +29,26 @@ class openldap::server::config {
       }
     }
     RedHat: {
-      shellvar { 'SLAPD_URLS':
+      shellvar { 'SLAPD_LDAP':
         ensure   => present,
+        target   => '/etc/sysconfig/ldap',
+        variable => 'SLAPD_LDAP',
+        value    => 'no',
+      }
+      shellvar { 'SLAPD_LDAPS':
+        ensure   => present,
+        target   => '/etc/sysconfig/ldap',
+        variable => 'SLAPD_LDAPS',
+        value    => 'no',
+      }
+      shellvar { 'SLAPD_LDAPI':
+        ensure   => present,
+        target   => '/etc/sysconfig/ldap',
+        variable => 'SLAPD_LDAPI',
+        value    => 'no',
+      }
+      shellvar { 'SLAPD_URLS':
+       ensure   => present,
         target   => '/etc/sysconfig/ldap',
         variable => 'SLAPD_URLS',
         value    => $slapd_ldap_urls
